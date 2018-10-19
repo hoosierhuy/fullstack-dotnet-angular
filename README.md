@@ -1,2 +1,2 @@
-# fullstack-dotnet-angular
-.Net WebApi Angular 6 Fullstack App
+# Full Stack .Net WebApi, C#, SQLite Relational DB, and Angular 6 App
+Full stack dating app (insert your own joke here).
