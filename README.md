@@ -4,4 +4,4 @@ Full stack dating app (insert your own joke here).  This type of project will re
 This is what the app looks like as of 11/14/2018:
 ![ss1](/DatingApp-SPA/src/assets/ReadMeImages/AppScreenShot1.PNG)
 
-![ss2](/DatingApp-SPA/src/assets/ReadMeImages/AppScreenShot2.png)
+![ss2](/DatingApp-SPA/src/assets/ReadMeImages/AppScreenShot2.PNG)
