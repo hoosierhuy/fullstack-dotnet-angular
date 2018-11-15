@@ -2,6 +2,6 @@
 Full stack dating app (insert your own joke here).  This type of project will require some level of familiarity with how modern .Net Core apps works.
 
 This is what the app looks like as of 11/14/2018:
-![](src/assets/ReadMeImages/AppScreenShot1.png)
+![](DatingApp-SPA/src/assets/ReadMeImages/AppScreenShot1.png)
 
-![](src/assets/ReadMeImages/AppScreenShot2.png)
+![](DatingApp-SPA/src/assets/ReadMeImages/AppScreenShot2.png)
