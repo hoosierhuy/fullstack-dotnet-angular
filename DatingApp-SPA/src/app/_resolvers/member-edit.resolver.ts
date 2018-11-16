@@ -6,21 +6,23 @@ import { catchError } from 'rxjs/operators';
 import { UserModel } from '../_models/user.model';
 import { UserService } from '../_services/user.service';
 import { AlertifyService } from '../_services/alertify.service';
+import { AuthService } from '../_services/auth.service';
 
 @Injectable()
-export class MemberListResolver implements Resolve<UserModel[]> {
+export class MemberEditResolver implements Resolve<UserModel> {
     constructor(
         private userService: UserService,
         private router: Router,
-        private alertifyService: AlertifyService
+        private alertifyService: AlertifyService,
+        private authService: AuthService
     ) {}
 
-    resolve(route: ActivatedRouteSnapshot): Observable<UserModel[]> {
-        return this.userService.getUsers()
+    resolve(route: ActivatedRouteSnapshot): Observable<UserModel> {
+        return this.userService.getUser(this.authService.decodedToken.nameid)
             .pipe(
                 catchError(error => {
-                    this.alertifyService.error('Problem retrieving member list data.');
-                    this.router.navigate(['/home']);
+                    this.alertifyService.error('Problem retrieving member edit data.');
+                    this.router.navigate(['/members']);
                     return of(null);
                 })
             );

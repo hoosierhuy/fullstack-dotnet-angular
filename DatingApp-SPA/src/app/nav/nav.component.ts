@@ -12,8 +12,8 @@ export class NavComponent {
   model: any = {};
   // Access identifier for authService set to public so it can be called in template
   constructor(
-    public authService: AuthService, 
-    private alertify: AlertifyService, 
+    public authService: AuthService,
+    private alertify: AlertifyService,
     private router: Router) { }
 
   login() {

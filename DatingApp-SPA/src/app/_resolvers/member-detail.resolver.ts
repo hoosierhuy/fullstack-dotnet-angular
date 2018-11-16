@@ -19,7 +19,7 @@ export class MemberDetailResolver implements Resolve<UserModel> {
         return this.userService.getUser(route.params['id'])
             .pipe(
                 catchError(error => {
-                    this.alertifyService.error('Problem retrieving data.');
+                    this.alertifyService.error('Problem retrieving member detail data.');
                     this.router.navigate(['/members']);
                     return of(null);
                 })
