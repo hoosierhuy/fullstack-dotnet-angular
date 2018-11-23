@@ -9,23 +9,23 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DatingApp.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20181107162430_ExtendedUserModelClass")]
-    partial class ExtendedUserModelClass
+    [Migration("20180715095151_ExtendedUserClass")]
+    partial class ExtendedUserClass
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024");
+                .HasAnnotation("ProductVersion", "2.1.1-rtm-30846");
 
-            modelBuilder.Entity("DatingApp.API.Models.PhotoModel", b =>
+            modelBuilder.Entity("DatingApp.API.Models.Photo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("DateAdded");
 
-                    b.Property<int>("Description");
+                    b.Property<string>("Description");
 
                     b.Property<bool>("IsMain");
 
@@ -40,7 +40,7 @@ namespace DatingApp.API.Migrations
                     b.ToTable("Photos");
                 });
 
-            modelBuilder.Entity("DatingApp.API.Models.UserModel", b =>
+            modelBuilder.Entity("DatingApp.API.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -76,7 +76,7 @@ namespace DatingApp.API.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("DatingApp.API.Models.ValueModel", b =>
+            modelBuilder.Entity("DatingApp.API.Models.Value", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -88,9 +88,9 @@ namespace DatingApp.API.Migrations
                     b.ToTable("Values");
                 });
 
-            modelBuilder.Entity("DatingApp.API.Models.PhotoModel", b =>
+            modelBuilder.Entity("DatingApp.API.Models.Photo", b =>
                 {
-                    b.HasOne("DatingApp.API.Models.UserModel", "User")
+                    b.HasOne("DatingApp.API.Models.User", "User")
                         .WithMany("Photos")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);

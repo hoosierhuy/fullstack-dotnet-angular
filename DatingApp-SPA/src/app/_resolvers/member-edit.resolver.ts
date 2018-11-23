@@ -18,13 +18,12 @@ export class MemberEditResolver implements Resolve<UserModel> {
     ) {}
 
     resolve(route: ActivatedRouteSnapshot): Observable<UserModel> {
-        return this.userService.getUser(this.authService.decodedToken.nameid)
-            .pipe(
-                catchError(error => {
-                    this.alertifyService.error('Problem retrieving member edit data.');
-                    this.router.navigate(['/members']);
-                    return of(null);
-                })
-            );
+        return this.userService.getUser$(this.authService.decodedToken.nameid).pipe(
+            catchError(error => {
+                this.alertifyService.error('Problem retrieving your data');
+                this.router.navigate(['/members']);
+                return of(null);
+            })
+        );
     }
 }

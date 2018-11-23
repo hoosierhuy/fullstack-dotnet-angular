@@ -16,6 +16,8 @@ export class MemberEditComponent implements OnInit {
   @ViewChild('editForm') editForm: NgForm;
 
   user: UserModel;
+  photoUrl: string;
+
   // Prevent the user from inadvertently closing the browser before saving changes
   @HostListener('window:beforeunload', ['$event'])
   unloadNotification($event: any) {
@@ -32,6 +34,7 @@ export class MemberEditComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe(data => this.user = data['user']);
+    this.authService.currentPhotoUrl$.subscribe(photoUrl => this.photoUrl = photoUrl);
   }
 
   updateUser() {
@@ -41,6 +44,11 @@ export class MemberEditComponent implements OnInit {
         this.alertifyService.success('Profile updated succesfully.');
         this.editForm.reset(this.user);
       }, error => this.alertifyService.error(error));
+  }
+
+  // Fires whenever there's a change in the child component
+  updateMainPhoto(photoUrl) {
+    this.user.photoUrl = photoUrl;
   }
 
 }

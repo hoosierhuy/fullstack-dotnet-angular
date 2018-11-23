@@ -16,7 +16,7 @@ export class MemberDetailResolver implements Resolve<UserModel> {
     ) {}
 
     resolve(route: ActivatedRouteSnapshot): Observable<UserModel> {
-        return this.userService.getUser(route.params['id'])
+        return this.userService.getUser$(route.params['id'])
             .pipe(
                 catchError(error => {
                     this.alertifyService.error('Problem retrieving member detail data.');

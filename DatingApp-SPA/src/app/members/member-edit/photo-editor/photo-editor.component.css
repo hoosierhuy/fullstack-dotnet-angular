@@ -1,0 +1,13 @@
+img.img-thumbnail {
+    height: 6.250rem;
+    min-width: 6.250rem !important;
+    margin-bottom: 0.125rem;
+}
+
+.nv-file-over {
+    border: dotted 0.1875rem red;
+}
+
+input[type=file] {
+    color: transparent;
+}
