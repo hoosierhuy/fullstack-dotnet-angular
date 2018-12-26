@@ -8,15 +8,15 @@ import { AlertifyService } from '../_services/alertify.service';
 })
 export class AuthGuard implements CanActivate {
   constructor(
-    private authService: AuthService, 
-    private router: Router, 
+    private authService: AuthService,
+    private router: Router,
     private alertify: AlertifyService) {
 
   }
 
   canActivate(): boolean {
-    if (this.authService.loggedIn()) return true;
-    
+    if (this.authService.loggedIn()) { return true; }
+
     this.alertify.error('Du darfst nicht passieren!');
     this.router.navigate(['/homme']);
     return false;

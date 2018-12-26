@@ -26,7 +26,7 @@ export class UserService {
   }
 
   setMainPhoto$(userId: number,  id: number) {
-    // Empty object to satisfy the body requirement in post requests
+    // Empty object in the post request is to satisfy the body requirement in post requests
     return this.http.post(`${this.baseUrl}users/${userId}/photos/${id}/setMain`, {});
   }
 

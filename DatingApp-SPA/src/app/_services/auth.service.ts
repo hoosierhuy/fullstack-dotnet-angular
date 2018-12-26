@@ -14,6 +14,7 @@ export class AuthService {
   jwtHelper = new JwtHelperService();
   decodedToken: any;
   currentUser: UserModel;
+  // Default silhouette if user haven't uploaded an image yet.
   photoUrl = new BehaviorSubject<string>('../../assets/user.png');
   currentPhotoUrl$ = this.photoUrl.asObservable();
 
