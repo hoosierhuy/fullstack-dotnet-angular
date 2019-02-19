@@ -9,6 +9,9 @@ import { AlertifyService } from '../_services/alertify.service';
 
 @Injectable()
 export class MemberListResolver implements Resolve<UserModel[]> {
+    pageNumber = 1;
+    pageSize = 5;
+
     constructor(
         private userService: UserService,
         private router: Router,
@@ -16,7 +19,7 @@ export class MemberListResolver implements Resolve<UserModel[]> {
     ) {}
 
     resolve(route: ActivatedRouteSnapshot): Observable<UserModel[]> {
-        return this.userService.getUsers$()
+        return this.userService.getUsers$(this.pageNumber, this.pageSize)
             .pipe(
                 catchError(error => {
                     this.alertifyService.error('Problem retrieving member list data.');

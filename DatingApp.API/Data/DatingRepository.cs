@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DatingApp.API.Helpers;
 using DatingApp.API.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -45,11 +46,11 @@ namespace DatingApp.API.Data
             return await _context.Photos.Where(u => u.UserId == userId).FirstOrDefaultAsync(p => p.IsMain);
         }
 
-        public async Task<IEnumerable<UserModel>> GetUsers()
+        public async Task<PageList<UserModel>> GetUsers(UserParams userParams)
         {
-            var users = await _context.Users.Include(p => p.Photos).ToListAsync();
+            var users = _context.Users.Include(p => p.Photos);
 
-            return users;
+            return await PageList<UserModel>.CreateAsync(users, userParams.PageNumber, userParams.PageSize);
         }
 
         public async Task<bool> SaveAll()
