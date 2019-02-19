@@ -13,6 +13,9 @@ import { AlertifyService } from 'src/app/_services/alertify.service';
 })
 export class MemberListComponent implements OnInit {
   users: UserModel[];
+  user: UserModel = JSON.parse(localStorage.getItem('user'));
+  genderList = [{value: 'male', display: 'Males'}, {value: 'female', display: 'Females'}];
+  userParams: any = {};
   pagination: IPagination;
 
   constructor(
@@ -26,6 +29,11 @@ export class MemberListComponent implements OnInit {
       this.users = data['users'].result;
       this.pagination = data['users'].pagination;
     });
+
+    this.userParams.gender = (this.user.gender === 'female') ? 'male' : 'female';
+    this.userParams.minAge = 18;
+    this.userParams.maxAge = 300;
+    this.userParams.orderBy = 'lastActive';
   }
 
   pageChanged(event: any): void {
@@ -33,8 +41,16 @@ export class MemberListComponent implements OnInit {
     this.loadUsers();
   }
 
+  resetFilters() {
+    this.userParams.gender = (this.user.gender === 'female') ? 'male' : 'female';
+    this.userParams.minAge = 18;
+    this.userParams.maxAge = 300;
+
+    this.loadUsers();
+  }
+
   loadUsers() {
-    this.userService.getUsers$(this.pagination.currentPage, this.pagination.itemsPerPage)
+    this.userService.getUsers$(this.pagination.currentPage, this.pagination.itemsPerPage, this.userParams)
       .subscribe((_result: PaginatedResult<UserModel[]>) => {
         this.users = _result.result;
         this.pagination = _result.pagination;
