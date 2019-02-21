@@ -11,7 +11,5 @@ To run the app:
     - Go to the DatingApp.API directory, open the Startup.cs file and uncomment the `seedData.SeedUsers();` line.  Open a terminal at the root of this project and run `dotnet ef database update` command. If there are no errors, issue `dotnet run` command.
     - In the root of the DatingApp-Spa directory, issue the `npm start` command.
 
-This is what the app looks like as of 11/14/2018:
-![ss1](/DatingApp-SPA/src/assets/ReadMeImages/AppScreenShot1.PNG)
-
-![ss2](/DatingApp-SPA/src/assets/ReadMeImages/AppScreenShot2.PNG)
+This is what the app looks like as of 2/2019:
+![ss1](/DatingApp-SPA/src/assets/ReadMeImages/dating_app.gif)
