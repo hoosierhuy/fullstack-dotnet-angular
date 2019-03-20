@@ -1,0 +1,11 @@
+table {
+  margin-top: 0.9rem;
+}
+
+td {
+  vertical-align: middle;
+}
+
+.img-circle {
+  max-height: 3.125rem;
+}

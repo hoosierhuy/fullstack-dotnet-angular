@@ -22,7 +22,7 @@ export class ListsComponent implements OnInit {
     private userService: UserService,
     private route: ActivatedRoute,
     private alertifyService: AlertifyService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.route.data.subscribe(data => {
@@ -34,17 +34,23 @@ export class ListsComponent implements OnInit {
 
   loadUsers() {
     this.userService
-      .getUsers$(this.pagination.currentPage, this.pagination.itemsPerPage, null, this.likesParam)
-      .subscribe((_result: PaginatedResult<UserModel[]>) => {
-        this.users = _result.result;
-        this.pagination = _result.pagination;
-      },
-      err => this.alertifyService.error(err));
+      .getUsers$(
+        this.pagination.currentPage,
+        this.pagination.itemsPerPage,
+        null,
+        this.likesParam
+      )
+      .subscribe(
+        (_result: PaginatedResult<UserModel[]>) => {
+          this.users = _result.result;
+          this.pagination = _result.pagination;
+        },
+        err => this.alertifyService.error(err)
+      );
   }
 
   pageChanged(event: any): void {
     this.pagination.currentPage = event.page;
     this.loadUsers();
   }
-
 }

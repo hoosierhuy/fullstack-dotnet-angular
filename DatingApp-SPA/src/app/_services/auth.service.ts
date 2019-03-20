@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
+
 import { environment } from 'src/environments/environment';
 import { UserModel } from '../_models/user.model';
 
@@ -25,9 +26,7 @@ export class AuthService {
   }
 
   login(model: any) {
-    return this.http
-    .post(`${this.baseUrl}login`, model)
-    .pipe(
+    return this.http.post(`${this.baseUrl}login`, model).pipe(
       map((response: any) => {
         const user = response;
         if (user) {
