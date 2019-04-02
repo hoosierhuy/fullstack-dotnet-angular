@@ -6,3 +6,5 @@ obj
 .gitignore
 .idea
 appsettings.json
+wwwwroot/*
+Old_Migrations/
